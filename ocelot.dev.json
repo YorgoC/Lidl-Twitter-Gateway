@@ -1,23 +1,33 @@
 ﻿{
   "Routes": [
     {
-      //Endpoint microservice
-      "DownstreamPathTemplate": "/weatherforecast",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
+      "DownstreamPathTemplate":"/api/Users",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
         {
-          "Host": "localhost",
-          //port microservice
-          "Port": 5001
+          "Host":"localhost",
+          "Port":"6969"
         }
       ],
-      //Endpoint gateway (you can use paramaters in the url too, don't forget to add it in the downstream path)
-      "UpstreamPathTemplate": "/api/weather",
-      //get,post,delete,put
-      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+      
+      
+      "UpstreamPathTemplate":"/users",
+      "UpstreamHttpMethod":[
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
     }
+    
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:5021"
+    "RequestIdKey":"X-Correlation-Id",
+    "BaseUrl": "https://localhost:6969"
   }
 }
