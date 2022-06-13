@@ -1,7 +1,7 @@
 ﻿{
   "Routes": [
     {
-      "DownstreamPathTemplate":"/api/Users",
+      "DownstreamPathTemplate":"/api/users",
       "DownstreamScheme":"http",
       "DownstreamHostAndPorts":[
         {
@@ -14,7 +14,6 @@
         "Region":"customercaching"
       },
       
-      
       "UpstreamPathTemplate":"/users",
       "UpstreamHttpMethod":[
         "GET"
@@ -23,8 +22,54 @@
         "AuthenticationProviderKey": "auth0",
         "AllowedScopes": []
       }
+    },
+
+    {
+      "DownstreamPathTemplate":"/api/users/auth0",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"localhost",
+          "Port":"6969"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/users/auth0",
+      "UpstreamHttpMethod":[
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate":"/api/users",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"localhost",
+          "Port":"6969"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/users",
+      "UpstreamHttpMethod":[
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
     }
-    
   ],
   "GlobalConfiguration": {
     "RequestIdKey":"X-Correlation-Id",
