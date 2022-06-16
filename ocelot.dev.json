@@ -25,6 +25,30 @@
     },
 
     {
+      "DownstreamPathTemplate":"/api/users/getuser",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"localhost",
+          "Port":"6969"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/users/getuser",
+      "UpstreamHttpMethod":[
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    },
+
+    {
       "DownstreamPathTemplate":"/api/users/auth0",
       "DownstreamScheme":"http",
       "DownstreamHostAndPorts":[
@@ -64,6 +88,75 @@
       "UpstreamPathTemplate":"/users",
       "UpstreamHttpMethod":[
         "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate":"/api/tweets/gettweets/{auth0Id}",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"localhost",
+          "Port":"6000"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/tweets/gettweets/{auth0Id}",
+      "UpstreamHttpMethod":[
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate":"/api/tweets/tweet",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"localhost",
+          "Port":"6000"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/tweets/tweet",
+      "UpstreamHttpMethod":[
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate":"/api/tweets/{lidlTweetId}",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"localhost",
+          "Port":"6000"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/tweets/{lidlTweetId}",
+      "UpstreamHttpMethod":[
+        "GET"
       ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "auth0",
