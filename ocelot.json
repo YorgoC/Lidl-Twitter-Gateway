@@ -1,3 +1,171 @@
 ﻿{
+  "Routes": [
+    {
+      "DownstreamPathTemplate":"/api/users",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"http://users-clusterip-srv",
+          "Port":"80"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
 
+      "UpstreamPathTemplate":"/users",
+      "UpstreamHttpMethod":[
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate":"/api/users/getuser",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"http://users-clusterip-srv",
+          "Port":"80"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/users/getuser",
+      "UpstreamHttpMethod":[
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate":"/api/users/auth0",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"http://users-clusterip-srv",
+          "Port":"80"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/users/auth0",
+      "UpstreamHttpMethod":[
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate":"/api/users",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"http://users-clusterip-srv",
+          "Port":"80"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/users",
+      "UpstreamHttpMethod":[
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate":"/api/tweets/gettweets/{auth0Id}",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"http://tweets-clusterip-srv",
+          "Port":"80"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/tweets/gettweets/{auth0Id}",
+      "UpstreamHttpMethod":[
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate":"/api/tweets/tweet",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"http://tweets-clusterip-srv",
+          "Port":"80"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/tweets/tweet",
+      "UpstreamHttpMethod":[
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate":"/api/tweets/{lidlTweetId}",
+      "DownstreamScheme":"http",
+      "DownstreamHostAndPorts":[
+        {
+          "Host":"http://tweets-clusterip-srv",
+          "Port":"80"
+        }
+      ],
+      "FileCacheOptions":{
+        "TtlSeconds":30,
+        "Region":"customercaching"
+      },
+
+      "UpstreamPathTemplate":"/tweets/{lidlTweetId}",
+      "UpstreamHttpMethod":[
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "auth0",
+        "AllowedScopes": []
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey":"X-Correlation-Id",
+    "BaseUrl": "https://localhost:6969"
+  }
 }

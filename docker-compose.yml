@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  lidl-twitter-gateway:
+    image: ${DOCKER_REGISTRY-}lidltwittergateway
+    build:
+      context: .
+      dockerfile: ./Dockerfile
